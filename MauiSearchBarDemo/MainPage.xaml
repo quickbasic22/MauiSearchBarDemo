@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiSearchBarDemo"
+             x:DataType="local:MainPage"
+             x:Class="MauiSearchBarDemo.MainPage">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="10, 20, 10, 0" />
+            <On Platform="Android" Value="10, 0" />
+            <On Platform="WinUI" Value="10, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <StackLayout>
+        <SearchBar x:Name="searchBar"
+                   Placeholder="Search text"
+                   TextChanged="searchBar_TextChanged"
+                   SearchButtonPressed="searchBar_SearchButtonPressed" />
+        <ActivityIndicator x:Name="MyActivityIdicator" HeightRequest="50" IsVisible="True" Color="Red" IsRunning="{Binding MyIsBusy}" />
+        <ScrollView x:Name="resultsScroll"
+                    VerticalOptions="FillAndExpand">
+            <StackLayout x:Name="resultsStack" />
+        </ScrollView>
+    </StackLayout>
+</ContentPage>
